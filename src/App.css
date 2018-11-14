@@ -7,6 +7,9 @@
   height: 40vmin;
 }
 
+p{
+  margin-bottom: 0 !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -17,11 +20,95 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+body{
+  background-color: #f7f7f7 !important;
+  height: -webkit-fill-available;
+}
+#root{
+  text-align: center;
+  height: -webkit-fill-available;
+  
+}
+.Btc-board{
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0px 1px 27px -3px rgba(0, 0, 0, 0.2);
+  padding: 21px 30px 21px 30px;
+  background-color: #ffffff;
+  margin-top: 3%;
+}
+.btc-logo , .btc-price{
+  display: inline-block;
+}
+.btc-logo{
+ }
 .App-link {
   color: #61dafb;
 }
+svg {
+  fill: #000;
+  fill-opacity: 0.3;
+}
 
+path {
+  stroke: steelblue;
+  stroke-width: 2px;
+  fill: none;
+}
+
+img{
+  height: 80px;
+}
+
+.axis {
+  stroke: #000;
+}
+
+.axis-labels text {
+  fill: #000;
+  fill-opacity: 0.9;
+  font-size: 12px;
+  text-anchor: middle;
+}
+
+.axis-labels line {
+  stroke: #000;
+}
+
+.gridline {
+  opacity: 0.2;
+}
+
+.same{
+  background-color: #dedede;
+  border: 5px solid #efefef;
+  padding: 10px;
+  border-radius: 17px;
+  color: #000;
+  -webkit-transition: color 2s; /* For Safari 3.1 to 6.0 */
+  transition: color 2s;
+}
+
+.rise{
+  background-color: #51f356;
+  border: 5px solid #9fffa2;
+  padding: 10px;
+  border-radius: 17px;
+  color: green;
+  -webkit-transition: color 2s; /* For Safari 3.1 to 6.0 */
+  transition: color 2s;
+}
+.down{
+  background-color: #ff6868;
+  border: 5px solid #ffa2a2;
+  color: red;
+  -webkit-transition: color 2s; /* For Safari 3.1 to 6.0 */
+  transition: color 2s;
+}
+.btc-price{
+  font-size: 17pt;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
