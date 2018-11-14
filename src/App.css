@@ -79,6 +79,9 @@ img{
 .gridline {
   opacity: 0.2;
 }
+svg{
+  padding-left: 22px;
+}
 
 .same{
   background-color: #dedede;
@@ -102,6 +105,8 @@ img{
 .down{
   background-color: #ff6868;
   border: 5px solid #ffa2a2;
+  padding: 10px;
+  border-radius: 17px;
   color: red;
   -webkit-transition: color 2s; /* For Safari 3.1 to 6.0 */
   transition: color 2s;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import './bootstrap.min.css';
-import * as d3 from 'd3'
+import * as d3 from 'd3';
+import * as moment from 'moment';
 
 var NumberFormat = require('react-number-format');
 
@@ -53,14 +54,15 @@ class Price extends Component {
   }
 
   loadPrice(){
-    var lastPrice = this.state.priceData;
+    //var lastPrice = this.state.priceData;
     var price_url = 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=BRL';
     fetch(price_url)
       .then(d => d.json())
       .then(d => {
         this.setState({
-          priceData: d["BRL"],
-          lastPrice: lastPrice
+          lastPrice: this.state.priceData,
+          priceData: d["BRL"]
+          
         })
       })
   }
@@ -193,7 +195,7 @@ class Chart extends React.Component {
     const h = height - 2 * margin, w = width - 2 * margin
 
     //number formatter
-    const xFormat = d3.format('~s')
+    const xFormat = d3.format('.5')
     
     //x scale
     /*const x = d3.scaleLinear()
@@ -202,7 +204,7 @@ class Chart extends React.Component {
 
     const x = d3.scaleTime()
     .domain([d3.min(data, d => d.a), d3.max(data, d => d.a)])    // values between for month of january
-    .range([margin, w- margin*4]); 
+    .range([margin, w]); 
 
     
     //y scale
@@ -217,19 +219,19 @@ class Chart extends React.Component {
       .y(d => y(d.b))
       .curve(d3.curveCatmullRom.alpha(0.5)) //curve line
      
-    const xTicks = x.ticks(6).map(d => (
+    const xTicks = x.ticks(14).map(d => (
         x(d) > margin && x(d) < w ? 
           <g transform={`translate(${x(d)},${h + margin})`}>  
-            <text>{xFormat(d)}</text>
+            <text>{moment(d).format('HH:mm')}</text>
             <line x1='0' x1='0' y1='0' y2='5' transform="translate(0,-20)"/>
           </g>
         : null
     ))
 
-    const yTicks = y.ticks(5).map(d => (
+    const yTicks = y.ticks(10).map(d => (
         y(d) > 10 && y(d) < h ? 
           <g transform={`translate(${margin},${y(d)})`}>  
-            <text x="-12" y="5">{xFormat(d)}</text>
+            <text x="-25" y="5">{xFormat(d)}</text>
             <line x1='0' x1='5' y1='0' y2='0' transform="translate(-5,0)"/>
             <line className='gridline' x1='0' x1={w - margin} y1='0' y2='0' transform="translate(-5,0)"/> 
           </g>
@@ -252,7 +254,7 @@ class Chart extends React.Component {
   }
 }
 
- const width = 600, height = 350, margin = 25
+ const width = 800, height = 350, margin = 25
  
 
 export default App;

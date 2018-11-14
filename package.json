@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "d3": "^5.7.0",
+    "moment": "^2.22.2",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-number-format": "^4.0.4",
